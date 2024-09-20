@@ -121,6 +121,9 @@ explore: orders {
 }
 
 explore: order_items {
+  always_filter: {
+    filters: [users.country: "USA"]
+  }
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
