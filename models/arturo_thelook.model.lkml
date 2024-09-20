@@ -113,12 +113,26 @@ explore: korean_string {}
 explore: map_layer {}
 
 explore: orders {
+  sql_always_where:
+  {% if orders.order_granularity._is_filtered %}
+  {% if orders.order_granularity._parameter_value == 'Date_and_Source' %}
+  UPPER(${users.city}) = "NEW YORK"
+  {% else %}
+  1=1
+  {% endif %}
+
+  {% else %}
+
+  1=1
+  {% endif %}
+  ;;
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
   }
 }
+
 
 explore: order_items {
   join: orders {

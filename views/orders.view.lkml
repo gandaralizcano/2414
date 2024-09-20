@@ -8,6 +8,10 @@ view: orders {
     type: number
     sql: ${TABLE}.id ;;
   }
+  #dimension: order_granularity {
+   # type:  number
+   # sql: ${TABLE}.order_granularity ;;
+
   dimension_group: created {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
@@ -16,6 +20,18 @@ view: orders {
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
+  }
+
+  parameter: order_granularity {
+    type: unquoted
+
+    allowed_value: {
+      value: "Date_Only"
+    }
+    allowed_value: {
+      value: "Date_and_Source"
+    }
+    default_value: "Date_Only"
   }
   dimension: user_id {
     type: number
