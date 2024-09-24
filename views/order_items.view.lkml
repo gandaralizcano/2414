@@ -16,6 +16,8 @@ view: order_items {
     type: number
     # hidden: yes
     sql: ${TABLE}.order_id ;;
+    # html:
+    # {% if }
   }
   dimension: phone {
     type: string
