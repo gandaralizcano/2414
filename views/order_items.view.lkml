@@ -2,6 +2,7 @@ view: order_items {
   sql_table_name: demo_db.order_items ;;
   drill_fields: [id]
 
+
   dimension: id {
     primary_key: yes
     type: number
@@ -27,7 +28,7 @@ view: order_items {
   }
   dimension_group: returned {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, week, month, quarter, year, month_name]
     sql: ${TABLE}.returned_at ;;
   }
   dimension: sale_price {
