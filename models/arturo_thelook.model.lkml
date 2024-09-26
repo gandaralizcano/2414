@@ -3,12 +3,39 @@ connection: "thelook"
 # include all the views
 include: "/views/**/*.view.lkml"
 
+include:"/explore/users.explore.lkml"
+
 datagroup: arturo_thelook_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
 
 persist_with: arturo_thelook_default_datagroup
+
+ explore: sql_runner {}
+
+# explore: +order_items {
+#   aggregate_table: rollup__orders_id__orders_status__orders_user_id__products_brand__products_item_name__returned_date__sale_price {
+#     query: {
+#       dimensions: [
+#         orders.id,
+#         orders.status,
+#         orders.user_id,
+#         products.brand,
+#         products.item_name,
+#         returned_date,
+#         sale_price
+#       ]
+#       measures: [count, orders.count]
+#       timezone: "Mexico/General"
+#     }
+# materialization: {
+#       datagroup_trigger: arturo_thelook_default_datagroup
+#     }
+#     }
+
+# }
+
 
 explore: billion_orders {
   join: orders {
@@ -60,7 +87,7 @@ explore: fakeorders {
 
 explore: fatal_error_user_derived_base {}
 
-explore: flights {}
+
 
 explore: foo {}
 
@@ -121,9 +148,14 @@ explore: orders {
 }
 
 explore: order_items {
+<<<<<<< HEAD
   access_filter: {
     field: users.state
     user_attribute: carrier
+=======
+  always_filter: {
+    filters: [users.country: "USA"]
+>>>>>>> 512fbd4b9dfc86eb90201121539ff215a39d3315
   }
   join: orders {
     type: left_outer
@@ -245,7 +277,7 @@ explore: testing_blob_type {}
 
 explore: test_space_in_column_name {}
 
-explore: users {}
+
 
 explore: user_data {
   join: users {

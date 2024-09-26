@@ -67,6 +67,11 @@ view: flights {
     type: number
     sql: ${TABLE}.taxi_out ;;
   }
+
+  measure: tail {
+    type: sum
+    sql: ${tail_num} ;;
+  }
   measure: count {
     type: count
   }
