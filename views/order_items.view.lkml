@@ -18,22 +18,7 @@ view: order_items {
           ELSE NULL
           END;;
   }
-  dimension: passing_filters {
 
-    type: string
-
-    sql:"" ;;
-    html:  <div style="border-radius: 5px; padding: 5px 10px; background:
-#0018A8; height: 60px; color: red;"> <nav style="font-size: 18px;">
-<a style="color: #efefef; padding: 5px 15px; float: right; line-height:
-40px; font-weight: bold;" target="new"
-<a href="/dashboards/88?Status={{ orders.status | url_encode }}&City={{ users.city | url_encode }}"
->☰
-Data Download</a>
-</nav>
-</div>;;
-
-}
 
   measure: test_1 {
     type: sum
