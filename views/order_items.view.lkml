@@ -2,6 +2,8 @@ view: order_items {
   sql_table_name: demo_db.order_items ;;
   drill_fields: [id]
 
+<<<<<<< HEAD
+=======
   parameter: test_param {
     allowed_value: { value: "Completed"}
     allowed_value: { value: "Cancelled"}
@@ -42,6 +44,7 @@ view: order_items {
     hidden: yes
     #value_format: "0"
   }
+>>>>>>> 512fbd4b9dfc86eb90201121539ff215a39d3315
 
   dimension: id {
     primary_key: yes
@@ -57,6 +60,8 @@ view: order_items {
     type: number
     # hidden: yes
     sql: ${TABLE}.order_id ;;
+    # html:
+    # {% if }
   }
   dimension: phone {
     type: string
@@ -68,7 +73,7 @@ view: order_items {
   }
   dimension_group: returned {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, week, month, quarter, year, month_name]
     sql: ${TABLE}.returned_at ;;
   }
   dimension: sale_price {

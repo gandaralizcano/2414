@@ -14,6 +14,7 @@ view: products {
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;
+    drill_fields: [id, item_name, inventory_items.count]
   }
   dimension: korean {
     type: string
